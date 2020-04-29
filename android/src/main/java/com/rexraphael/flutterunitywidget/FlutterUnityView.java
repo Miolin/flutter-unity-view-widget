@@ -91,7 +91,10 @@ public class FlutterUnityView implements PlatformView, MethodChannel.MethodCallH
         if (UnityUtils.isUnityReady()) {
             try {
                 UnityUtils.getPlayer().currentActivity.runOnUiThread(new Runnable() {
-                    UnityUtils.getPlayer().quit();
+                    @Override
+                    public void run() {
+                       UnityUtils.getPlayer().quit();
+                    }
                 });
             } catch(Throwable ignore) {}
         }
